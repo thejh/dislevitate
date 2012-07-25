@@ -1,0 +1,65 @@
+NO WARRANTY! IF YOU BRICK YOUR DEVICE WITH THIS, IT'S NOT MY FAULT!
+
+First, verify using the xray app from xray.io that your device is vulnerable to the Levitator
+exploit.
+
+Now, run this command:
+
+    uname -a
+
+Make sure that the output is exactly
+
+    Linux localhost 2.6.32.9-gb08c3c8 #1 PREEMPT Fri Jun 3 11:40:33 CST 2011 armv7l GNU/Linux
+
+If it's different, it probably won't work.
+
+Next, copy the file dislevitate.ko from https://github.com/thejh/dislevitate/raw/master/dislevitate.ko
+on the Defy (e.g. on the sdcard).
+
+All the following commands must be run as root.
+
+Make /system writable:
+
+    mount -o remount,rw /system
+
+Copy the module into the directory with all the other modules:
+
+    cp /sdcard/dislevitate.ko /system/lib/modules/
+    chmod 644 /system/lib/modules/dislevitate.ko
+
+Now we will test the protection without activating it permanently (in case stuff goes wrong):
+
+    insmod /system/lib/modules/dislevitate.ko; dmesg | grep levitator
+
+If your device crashes (which shouldn't happen), don't continue with these instructions. What
+should happen is that you see something like this:
+
+    <6>[ 1533.541809] Hello android kernel... going to patch the levitator security hole, please wait...
+    <6>[ 1533.559143] done! you should be protected against the levitator exploit now!
+
+In this case, the patch works and you can install it permanently. However, if the second line is something like
+
+    wrong instruction encountered, could not patch the levitator vulnerability!
+
+the patch won't work and you should stop.
+
+If you want to, you can also verify whether it worked by checking the Levitator vuln in X-Ray again - it
+shouldn't exist anymore.
+
+Now you are ready to install the patch permanently. The kernel needs to be patched on each boot, so we will
+create an init file:
+
+    nano /etc/init.d/20dislevitate
+
+Now enter the following lines of code:
+
+    #!/system/bin/sh
+    
+    # patch the levitator vuln in the running kernel!
+    insmod /system/lib/modules/dislevitate.ko
+
+Afterwards, press CTRL+Y, then Y, then enter. Now, set the correct permissions:
+
+    chmod 755 /etc/init.d/20dislevitate
+
+Now, reboot and check in X-Ray again. The vuln should be gone now.

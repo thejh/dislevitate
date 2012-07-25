@@ -1,0 +1,2 @@
+The files dislevitate.ko, dislevitate.c, Makefile, compile and INSTALLING are under the GNU GPL. The rest wasn't
+written by me, but as far as I know, it's part of the kernel and under the GNU GPL, too.
