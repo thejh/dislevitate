@@ -1,0 +1,76 @@
+   0:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+   4:	e590301c 	ldr	r3, [r0, #28]
+   8:	e1a04000 	mov	r4, r0
+   c:	e1a05001 	mov	r5, r1
+  10:	e3530000 	cmp	r3, #0
+  14:	e5916000 	ldr	r6, [r1]
+  18:	1a000012 	bne	0x68
+  1c:	e3a00001 	mov	r0, #1
+  20:	ebfffd9b 	bl	0xfffff694
+  24:	e3500000 	cmp	r0, #0
+  28:	0a000004 	beq	0x40
+  2c:	e3a00002 	mov	r0, #2
+  30:	ebfffd97 	bl	0xfffff694
+  34:	e3500000 	cmp	r0, #0
+  38:	0a00002f 	beq	0xfc
+  3c:	ea000009 	b	0x68
+  40:	ebfffd93 	bl	0xfffff694
+  44:	e3500000 	cmp	r0, #0
+  48:	1a00002b 	bne	0xfc
+  4c:	e356000c 	cmp	r6, #12
+  50:	3a000029 	bcc	0xfc
+  54:	e356000d 	cmp	r6, #13
+  58:	9a000002 	bls	0x68
+  5c:	e2463043 	sub	r3, r6, #67	; 0x43
+  60:	e3530001 	cmp	r3, #1
+  64:	8a000024 	bhi	0xfc
+  68:	e59f30b4 	ldr	r3, [pc, #180]	; 0x124
+  6c:	e595200c 	ldr	r2, [r5, #12]
+  70:	e5933000 	ldr	r3, [r3]
+  74:	e3520000 	cmp	r2, #0
+  78:	e5933040 	ldr	r3, [r3, #64]	; 0x40
+  7c:	e5937000 	ldr	r7, [r3]
+  80:	0a000009 	beq	0xac
+  84:	e5951008 	ldr	r1, [r5, #8]
+  88:	e3a00001 	mov	r0, #1
+  8c:	ebffccdf 	bl	0xffff3410
+  90:	e1a00004 	mov	r0, r4
+  94:	e1a01007 	mov	r1, r7
+  98:	e5952008 	ldr	r2, [r5, #8]
+  9c:	e595300c 	ldr	r3, [r5, #12]
+  a0:	ebffce81 	bl	0xffff3aac
+  a4:	e3500000 	cmp	r0, #0
+  a8:	1a000013 	bne	0xfc
+  ac:	e356006e 	cmp	r6, #110	; 0x6e
+  b0:	8a000011 	bhi	0xfc
+  b4:	e2878a01 	add	r8, r7, #4096	; 0x1000
+  b8:	e1a00006 	mov	r0, r6
+  bc:	e1a01007 	mov	r1, r7
+  c0:	e1a02008 	mov	r2, r8
+  c4:	e1a03004 	mov	r3, r4
+  c8:	e59fc058 	ldr	ip, [pc, #88]	; 0x128
+  cc:	e1a0e00f 	mov	lr, pc
+  d0:	e79cf106 	ldr	pc, [ip, r6, lsl #2]
+  d4:	e2506000 	subs	r6, r0, #0
+  d8:	ba000008 	blt	0x100
+  dc:	e1a02008 	mov	r2, r8
+  e0:	e5953014 	ldr	r3, [r5, #20]
+  e4:	e1a00004 	mov	r0, r4
+  e8:	e5951010 	ldr	r1, [r5, #16]
+  ec:	ebffce87 	bl	0xffff3b10
+  f0:	e3500000 	cmp	r0, #0
+  f4:	03a06000 	moveq	r6, #0
+  f8:	ea000000 	b	0x100
+  fc:	e3e0600d 	mvn	r6, #13
+ 100:	e5943014 	ldr	r3, [r4, #20]
+ 104:	e3530000 	cmp	r3, #0
+ 108:	0a000003 	beq	0x11c
+ 10c:	e3a03000 	mov	r3, #0
+ 110:	e5940010 	ldr	r0, [r4, #16]
+ 114:	e5843014 	str	r3, [r4, #20]
+ 118:	ebffeab3 	bl	0xffffabec
+ 11c:	e1a00006 	mov	r0, r6
+ 120:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+ 124:	c0615870 	rsbgt	r5, r1, r0, ror r8
+ 128:	c0615600 	rsbgt	r5, r1, r0, lsl #12
+

@@ -1,0 +1,25 @@
+00000024 <BridgedDispatchKM_FIXCODE>:
+  24:	e92d4010 	push	{r4, lr}
+  28:	e591200c 	ldr	r2, [r1, #12]
+  2c:	e3520a01 	cmp	r2, #4096	; 0x1000
+  30:	81a0200d 	movhi	r2, sp
+  34:	859f003c 	ldrhi	r0, [pc, #60]	; 78 <BridgedDispatchKM_FIXCODE+0x54>
+  38:	83c23d7f 	bichi	r3, r2, #8128	; 0x1fc0
+  3c:	8a000005 	bhi	58 <BridgedDispatchKM_FIXCODE+0x34>
+  40:	e5913014 	ldr	r3, [r1, #20]
+  44:	e3530a01 	cmp	r3, #4096	; 0x1000
+  48:	9a000008 	bls	70 <BridgedDispatchKM_FIXCODE+0x4c>
+  4c:	e1a0200d 	mov	r2, sp
+  50:	e59f0024 	ldr	r0, [pc, #36]	; 7c <BridgedDispatchKM_FIXCODE+0x58>
+  54:	e3c23d7f 	bic	r3, r2, #8128	; 0x1fc0
+  58:	e3c3303f 	bic	r3, r3, #63	; 0x3f
+  5c:	e593300c 	ldr	r3, [r3, #12]
+  60:	e5931224 	ldr	r1, [r3, #548]	; 0x224
+  64:	ebfffffe 	bl	0 <printk>
+  68:	e3e0000d 	mvn	r0, #13
+  6c:	e8bd8010 	pop	{r4, pc}
+  70:	e8bd4010 	pop	{r4, lr}
+  74:	eafffffe 	b	0 <BridgedDispatchKM>
+  78:	0000001e 	.word	0x0000001e
+  7c:	00000084 	.word	0x00000084
+

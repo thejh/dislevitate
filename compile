@@ -1,0 +1,1 @@
+KCPPFLAGS='-I/home/jann/software/linux-defy/kernel/drivers/gpu/pvr/sgx/ -I/home/jann/software/linux-defy/kernel/drivers/gpu/pvr/ -I/home/jann/software/linux-defy/kernel/drivers/gpu/pvr/omap3/' ARCH=arm CROSS_COMPILE=/home/jann/x-tools/arm-cortex_a8-linux-uclibcgnueabi/bin/arm-cortex_a8-linux-uclibcgnueabi- make

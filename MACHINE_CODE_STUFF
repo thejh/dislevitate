@@ -1,0 +1,24 @@
+INSTRUCTION @0x110 (absolute: @0xc01d6088):
+bl	0xa6c8
+RAW:                  6C 29 00 EB   01101100 00101001 00000000 11101011
+RAW (inverted bytes): eb 00 29 6c   11101011 00000000 00101001 01101100
+relative destination offset: 0xc01e0640 - 0xc01d6088 = 0xa5b8 = 10100101 10111000
+relative destination offset >>2: 0x296e  (must actually be two less because the pointer is ahead)
+
+
+
+Condition field: 1110 (always)
+Branch: 101
+Branch with Link: 1
+
+
+
+
+
+Branch instructions contain a signed 2's complement 24-bit offset. This is shifted left
+two bits, sign extended to 32 bits, and added to the PC. The instruction can therefore
+specify a branch of +/- 32Mbytes. The branch offset must take account of the prefetch
+operation, which causes the PC to be 2 words (8 bytes) ahead of the current
+instruction. Branches beyond +/- 32Mbytes must use an offset or absolute destination
+which has been previously loaded into a register. In this case the PC should be
+manually saved in R14 if a branch with link type operation is required.
